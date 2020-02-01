@@ -7,7 +7,7 @@ public class HealthSystem : MonoBehaviour
 
     public void ModifyHealth(int modified)
     {
-        health += modified;
+        health = Mathf.Clamp(health + modified, 0, MAX_HEALTH);
     }
 
     public int GetHealth()
