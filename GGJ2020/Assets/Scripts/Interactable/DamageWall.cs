@@ -12,6 +12,7 @@ public class DamageWall : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             collision.gameObject.GetComponent<HealthSystem>().ModifyHealth(damage < 0 ? damage : -damage);
+            StartCoroutine(Camera.main.GetComponent<CameraShake>().Shake(.15f, .2f));
         }
     }
 
