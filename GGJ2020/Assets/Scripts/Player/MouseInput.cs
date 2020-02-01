@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+// Dummy
 public class MouseInput : MonoBehaviour
 {
 
