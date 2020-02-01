@@ -18,8 +18,6 @@ public class MouseInput : MonoBehaviour
     [Tooltip("Acceleration coefficient")]
     public float acceleration = 2.5f;
 
-    public LayerMask mask;
-
     private bool takenHealth = false;
 
     private Vector3 targetPosition;
@@ -40,14 +38,14 @@ public class MouseInput : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         hs = GetComponent<HealthSystem>();
 
-        
+        onNewGrapple = new UnityEvent();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //onNewGrapple.Invoke(); apparentyl the cord doesn't even have to be attatched?
+            onNewGrapple.Invoke();
             if (line == null)
             {
                 RaycastHit hit;
@@ -118,8 +116,7 @@ public class MouseInput : MonoBehaviour
 
     public void ConnectedToSource()
     {
-        line.material = chargeTether;
-        Debug.Log("asd");
+        line.GetComponent<Renderer>().sharedMaterial = chargeTether;
     }
 
     void CreateTether(RaycastHit hit)
@@ -176,6 +173,15 @@ public class MouseInput : MonoBehaviour
     void DestroyClaw()
     {
         Destroy(claw);
+    }
+
+    private void AddListeners()
+    {
+        Outlet[] outlets = FindObjectsOfType<Outlet>();
+        foreach (var item in outlets)
+        {
+            onNewGrapple.AddListener(item.DeactivateConnection);
+        }
     }
 
     
