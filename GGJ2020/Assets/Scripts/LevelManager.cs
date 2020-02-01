@@ -7,17 +7,24 @@ public class LevelManager : MonoBehaviour
 {
     [Tooltip("The time (in seconds) that the player has to complete the level after activating the main core")]
     [SerializeField] float masterTimerValue;
+    public int objectiveState; //0 is pre core activation, 1 is post core activation
     public static float loadNextTime = 2;
     public static float loadCurrentTime = 2;
     private List<PowerConduit> SubCores;
     private int coresCompleted;
     private float timer;
     private bool timerRunning;
+    private ObjectivePointer pointers;
 
     public static LevelManager _instance;
-    void Start()
+    private void Awake()
     {
         _instance = this;
+    }
+
+    void Start()
+    {
+        pointers = FindObjectOfType<ObjectivePointer>();
         FindSubCores();
     }
 
@@ -71,11 +78,12 @@ public class LevelManager : MonoBehaviour
 
     public void StartResetMasterTimer()
     {
+        objectiveState = 1;//For all relevant UI
         timerRunning = true;
         timer = masterTimerValue;
     }
 
-    private void FindSubCores()
+    public List<PowerConduit> FindSubCores()
     {
         SubCores = new List<PowerConduit>();
         PowerConduit[] conduits = GameObject.FindObjectsOfType<PowerConduit>();
@@ -86,6 +94,23 @@ public class LevelManager : MonoBehaviour
                 SubCores.Add(c);
             }
         }
+        return SubCores;
+    }
+
+    public PowerConduit FindMainCore()
+    {
+        PowerConduit mainCore = new PowerConduit();
+        PowerConduit[] conduits = GameObject.FindObjectsOfType<PowerConduit>();
+        foreach (PowerConduit c in conduits)
+        {
+            if (c.isCore)
+            {
+                mainCore = c;
+                break;
+            }
+        }
+        
+        return mainCore;
     }
 
     public void RefreshCoresCompleted()
@@ -104,5 +129,7 @@ public class LevelManager : MonoBehaviour
         {
             LevelManager._instance.LoadNextWithDelay();// win condition?
         }
+
+        pointers.RefreshObjectives(SubCores);
     }
 }
