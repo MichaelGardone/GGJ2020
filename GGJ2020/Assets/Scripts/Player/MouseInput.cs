@@ -174,11 +174,10 @@ public class MouseInput : MonoBehaviour
         
         foreach (Outlet o in levelOutlets)
         {
+            Debug.Log(o.name);
             onNewGrapple.AddListener(o.Deactivate);
         }
 
-        if (levelOutlets == null)
-            levelOutlets = new Outlet[0];
     }
 
 }
