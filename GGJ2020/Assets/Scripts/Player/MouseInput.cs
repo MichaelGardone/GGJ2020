@@ -178,7 +178,7 @@ public class MouseInput : MonoBehaviour
         }
 
         if (levelOutlets == null)
-            levelOutlets = new Outlet[];
+            levelOutlets = new Outlet[0];
     }
 
 }
