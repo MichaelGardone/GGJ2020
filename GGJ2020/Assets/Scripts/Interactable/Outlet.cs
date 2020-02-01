@@ -8,6 +8,8 @@ public class Outlet : MonoBehaviour
     private HealthSystem targetHealth;
     public static int chargePerTick;
     [SerializeField] int chargePool;
+    private bool inRange;
+    
     private int remainingCharge;
     void Start()
     {
@@ -17,33 +19,30 @@ public class Outlet : MonoBehaviour
     // Update is called once per frame. Fixed is not lmao
     void FixedUpdate()
     {
-        if (hasActiveConnection && targetHealth.GetHealth() < targetHealth.GetMaxHealth() && remainingCharge > 0)
+        if (inRange && targetHealth.GetHealth() < targetHealth.GetMaxHealth() && remainingCharge > 0)
         {
             targetHealth.ModifyHealth(chargePerTick);
             chargePool -= chargePerTick;
         }
     }
 
-    public void SetActiveState(HealthSystem target, bool active)// in case we make enemies that can charge
+    
+
+    
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (active)
+        if (other.CompareTag("Player"))
         {
-            hasActiveConnection = true;
-            targetHealth = target;
-        }
-        else
-        {
-            hasActiveConnection = false;
-            targetHealth = null;
-        }
+            inRange = true;
+        }   
     }
 
-    public void Deactivate()
+    private void OnTriggerExit(Collider other)
     {
-        if (hasActiveConnection)
+        if (other.CompareTag("Player"))
         {
-            SetActiveState(null, false);
+            inRange = false;
         }
-
     }
 }

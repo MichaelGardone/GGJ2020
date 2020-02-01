@@ -18,11 +18,11 @@ public class ClawControl : MonoBehaviour
         //{
         //    mi.SetNewTarget(collision.gameObject.transform.position);
         //}
-        if(collision.gameObject.TryGetComponent<Outlet>(out Outlet outlet))
-        {
-            outlet.SetActiveState(this.GetComponent<HealthSystem>(), true); //is disabled with the onNewGrapple event
-        }
-        else if(collision.gameObject.TryGetComponent<PowerConduit>(out PowerConduit conduit))
+        //if(collision.gameObject.TryGetComponent<Outlet>(out Outlet outlet))
+        //{
+        //    outlet.SetActiveState(this.GetComponent<HealthSystem>(), true); //is disabled with the onNewGrapple event
+        //}
+        if(collision.gameObject.TryGetComponent<PowerConduit>(out PowerConduit conduit))
         {
             conduit.ActivateConduit();
             
