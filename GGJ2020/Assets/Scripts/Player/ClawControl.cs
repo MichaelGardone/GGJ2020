@@ -14,10 +14,10 @@ public class ClawControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag != "BadWall")
-        {
-            mi.SetNewTarget(collision.gameObject.transform.position);
-        }
+        //if(collision.gameObject.tag != "BadWall")
+        //{
+        //    mi.SetNewTarget(collision.gameObject.transform.position);
+        //}
         if(collision.gameObject.TryGetComponent<Outlet>(out Outlet outlet))
         {
             outlet.SetActiveState(this.GetComponent<HealthSystem>(), true); //is disabled with the onNewGrapple event

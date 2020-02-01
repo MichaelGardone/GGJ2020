@@ -31,6 +31,8 @@ public class MouseInput : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         hs = GetComponent<HealthSystem>();
 
+        onNewGrapple = new UnityEvent();
+
         AddGrappleListeners();
     }
 
@@ -83,7 +85,7 @@ public class MouseInput : MonoBehaviour
                 }
 
                 Vector3 dist = (finalPosition - transform.position);
-                if (rb.velocity.magnitude < 25f && dist.magnitude > 2f)
+                if (rb.velocity.magnitude < 25f && dist.magnitude > 0.5f)
                     rb.AddForce(new Vector3(dist.normalized.x, 0, dist.normalized.z) * 2.5f);
 
                 line.SetPosition(0, transform.position);
@@ -94,6 +96,7 @@ public class MouseInput : MonoBehaviour
                 }
             }
 
+            // LOS
             Ray r = new Ray(transform.position, target.point - transform.position);
             RaycastHit hit;
             if (Physics.Raycast(r, out hit))
@@ -134,10 +137,13 @@ public class MouseInput : MonoBehaviour
         // Transform positions
         line.SetPosition(0, transform.position);
         line.SetPosition(1, targetPosition);
+
+        CreateClaw();
     }
 
     void DestroyTether()
     {
+        DestroyClaw();
         Destroy(line.gameObject);
         finalPosition = transform.position;
         targetPosition = transform.position;
@@ -151,6 +157,13 @@ public class MouseInput : MonoBehaviour
 
         ClawControl c = claw.AddComponent<ClawControl>();
         c.SetMouseInput(this);
+
+        Rigidbody r = claw.AddComponent<Rigidbody>();
+        r.useGravity = false;
+        r.freezeRotation = true;
+
+        BoxCollider b = claw.AddComponent<BoxCollider>();
+        b.size = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     void DestroyClaw()
@@ -164,8 +177,10 @@ public class MouseInput : MonoBehaviour
         
         foreach (Outlet o in levelOutlets)
         {
+            Debug.Log(o.name);
             onNewGrapple.AddListener(o.Deactivate);
         }
+
     }
 
 }

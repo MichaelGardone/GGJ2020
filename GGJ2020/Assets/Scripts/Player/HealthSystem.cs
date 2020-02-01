@@ -2,7 +2,7 @@
 
 public class HealthSystem : MonoBehaviour
 {
-    private int health = 100;
+    public int health = 100;
     private const int MAX_HEALTH = 100;
 
     public void ModifyHealth(int modified)
