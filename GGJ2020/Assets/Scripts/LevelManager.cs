@@ -41,7 +41,7 @@ public class LevelManager : MonoBehaviour
 
             if(timer <= 0)
             {
-                ReloadWithDelay();
+                StartCoroutine(ReloadWithDelay());
             }
         }
         
@@ -49,9 +49,10 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator LoadNextWithDelay()
     {
+        Debug.Log("StartAsync");
         yield return new WaitForSeconds(loadNextTime);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        asyncLoad.allowSceneActivation = false;
+        //asyncLoad.allowSceneActivation = false;
 
         while (!asyncLoad.isDone)
         {
@@ -63,9 +64,10 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator ReloadWithDelay()
     {
+        Debug.Log("StartAsync");
         yield return new WaitForSeconds(loadCurrentTime);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-        asyncLoad.allowSceneActivation = false;
+        //asyncLoad.allowSceneActivation = false;
 
         while (!asyncLoad.isDone)
         {

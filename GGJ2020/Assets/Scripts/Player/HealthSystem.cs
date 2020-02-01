@@ -4,6 +4,7 @@ public class HealthSystem : MonoBehaviour
 {
     public int health = 100;
     private const int MAX_HEALTH = 100;
+    private bool dead;
 
     public void ModifyHealth(int modified)
     {
@@ -11,9 +12,10 @@ public class HealthSystem : MonoBehaviour
 
         //if is the player
 
-        if(health <= 0)
+        if(health <= 0 && !dead)
         {
-            LevelManager._instance.ReloadWithDelay();
+            dead = true;
+            StartCoroutine(LevelManager._instance.ReloadWithDelay());
         }
     }
 
