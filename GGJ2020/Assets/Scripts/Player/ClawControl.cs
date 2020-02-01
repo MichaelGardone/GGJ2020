@@ -20,7 +20,7 @@ public class ClawControl : MonoBehaviour
         }
         if(collision.gameObject.TryGetComponent<Outlet>(out Outlet outlet))
         {
-            outlet.SetActiveState(this.GetComponent<HealthSystem>(), true); //needs to be disabled after enabling
+            outlet.SetActiveState(this.GetComponent<HealthSystem>(), true); //is disabled with the onNewGrapple event
         }
         else if(collision.gameObject.TryGetComponent<PowerConduit>(out PowerConduit conduit))
         {

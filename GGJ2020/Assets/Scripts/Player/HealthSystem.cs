@@ -8,6 +8,13 @@ public class HealthSystem : MonoBehaviour
     public void ModifyHealth(int modified)
     {
         health = Mathf.Clamp(health + modified, 0, MAX_HEALTH);
+
+        //if is the player
+
+        if(health <= 0)
+        {
+            LevelManager._instance.ReloadWithDelay();
+        }
     }
 
     public int GetHealth()
