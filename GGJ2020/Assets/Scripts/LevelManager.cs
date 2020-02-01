@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -42,11 +43,30 @@ public class LevelManager : MonoBehaviour
     public IEnumerator LoadNextWithDelay()
     {
         yield return new WaitForSeconds(loadNextTime);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        asyncLoad.allowSceneActivation = false;
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        asyncLoad.allowSceneActivation = true;
+        yield return null;
     }
 
     public IEnumerator ReloadWithDelay()
     {
         yield return new WaitForSeconds(loadCurrentTime);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+        asyncLoad.allowSceneActivation = false;
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        asyncLoad.allowSceneActivation = true;
+        yield return null;
     }
 
     public void StartResetMasterTimer()
