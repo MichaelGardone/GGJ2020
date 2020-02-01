@@ -5,9 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
-  - Wall-NotTetherable
   - Drain
   - Source
+  - BadWall
   layers:
   - Default
   - TransparentFX
