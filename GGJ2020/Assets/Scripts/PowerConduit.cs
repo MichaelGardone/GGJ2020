@@ -74,7 +74,7 @@ public class PowerConduit : MonoBehaviour
         linksToNext[childPointIndex].SetPositions(new Vector3[] { transform.position, nodeToConnecetTo.transform.position });
     }
 
-    public void UpdateConnections()// call from first in node 
+    public void UpdateConnections()// call from first "in" node 
     {
 
         for (int i = 0; i < nextNodes.Count; i++)
