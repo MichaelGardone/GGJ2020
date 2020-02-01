@@ -114,11 +114,13 @@ public class PowerConduit : MonoBehaviour
         if(isCore && powered)
         {
             //doSomething
+            LevelManager._instance.StartResetMasterTimer();
             locked = true;
         }
         else if(isSubCore && powered)
         {
             //do something
+            LevelManager._instance.RefreshCoresCompleted();
             locked = true;
         }
         return powered;

@@ -4,17 +4,34 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [Tooltip("The time (in seconds) that the player has to complete the level after activating the main core")]
+    [SerializeField] float masterTimerValue;
     public static float loadNextTime = 2;
     public static float loadCurrentTime = 2;
     private List<PowerConduit> SubCores;
     private int coresCompleted;
+    private float timer;
+    private bool timerRunning;
 
     public static LevelManager _instance;
     void Start()
     {
         _instance = this;
         FindSubCores();
+    }
+
+    private void Update()
+    {
+        if (timerRunning)
+        {
+            timer -= Time.deltaTime;
+
+            if(timer <= 0)
+            {
+                ReloadWithDelay();
+            }
+        }
+        
     }
 
     public IEnumerator LoadNextWithDelay()
@@ -25,6 +42,12 @@ public class LevelManager : MonoBehaviour
     public IEnumerator ReloadWithDelay()
     {
         yield return new WaitForSeconds(loadCurrentTime);
+    }
+
+    public void StartResetMasterTimer()
+    {
+        timerRunning = true;
+        timer = masterTimerValue;
     }
 
     private void FindSubCores()
