@@ -20,6 +20,11 @@ public class LevelManager : MonoBehaviour
         FindSubCores();
     }
 
+    public float GetCurrentTimeLeft()
+    {
+        return timer;
+    }
+
     private void Update()
     {
         if (timerRunning)
