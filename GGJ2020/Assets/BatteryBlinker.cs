@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BatteryBlinker : MonoBehaviour
 {
@@ -16,14 +17,34 @@ public class BatteryBlinker : MonoBehaviour
     private List<Sprite> activeSprites;
     private int activeIndex;
     private Image image;
+    RectTransform self;
+    Camera mainCam;
+    TextMeshProUGUI healthPercentTMP;
+
+    private int healthLastFrame;
     void Start()
     {
+        mainCam = Camera.main;
+        self = GetComponent<RectTransform>();
         image = GetComponent<Image>();
         playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthSystem>();
         activeSprites = new List<Sprite>();
         activeSprites.Add(Value100);
         activeSprites.Add(Value100);
         StartCoroutine(Blink());
+        healthLastFrame = playerHealth.GetHealth();
+        healthPercentTMP = transform.GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        if (healthLastFrame != playerHealth.GetHealth())
+        {
+            GetComponent<Animator>().SetTrigger("TakeDamage");
+            healthPercentTMP.text = (int)(100 * (float)playerHealth.GetHealth() / (float)playerHealth.GetMaxHealth()) + "%";
+        }
+        self.position = mainCam.WorldToScreenPoint(playerHealth.transform.position) + new Vector3(0,50);
+        healthLastFrame = playerHealth.GetHealth();
     }
 
     // Update is called once per frame
