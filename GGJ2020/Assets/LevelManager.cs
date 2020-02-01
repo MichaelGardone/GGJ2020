@@ -51,5 +51,10 @@ public class LevelManager : MonoBehaviour
             }
         }
         coresCompleted = i;
+
+        if(coresCompleted >= SubCores.Count - 1)
+        {
+            LevelManager._instance.LoadNextWithDelay();// win condition?
+        }
     }
 }
