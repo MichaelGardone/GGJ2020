@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MouseInput : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class MouseInput : MonoBehaviour
     private Vector3 targetPosition;
     private Vector3 finalPosition;
 
+    private UnityEvent onNewGrapple;
+
     LineRenderer line;
     GameObject claw;
     Rigidbody rb;
@@ -27,12 +30,15 @@ public class MouseInput : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         hs = GetComponent<HealthSystem>();
+
+        AddGrappleListeners();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            onNewGrapple.Invoke();
             if (line == null)
             {
                 RaycastHit hit;
@@ -150,6 +156,16 @@ public class MouseInput : MonoBehaviour
     void DestroyClaw()
     {
         Destroy(claw);
+    }
+
+    void AddGrappleListeners()
+    {
+        Outlet[] levelOutlets = GameObject.FindObjectsOfType<Outlet>();
+        
+        foreach (Outlet o in levelOutlets)
+        {
+            onNewGrapple.AddListener(o.Deactivate);
+        }
     }
 
 }
