@@ -38,14 +38,14 @@ public class MouseInput : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         hs = GetComponent<HealthSystem>();
 
-        
+        onNewGrapple = new UnityEvent();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //onNewGrapple.Invoke(); apparentyl the cord doesn't even have to be attatched?
+            onNewGrapple.Invoke();
             if (line == null)
             {
                 RaycastHit hit;
@@ -173,6 +173,15 @@ public class MouseInput : MonoBehaviour
     void DestroyClaw()
     {
         Destroy(claw);
+    }
+
+    private void AddListeners()
+    {
+        Outlet[] outlets = FindObjectsOfType<Outlet>();
+        foreach (var item in outlets)
+        {
+            onNewGrapple.AddListener(item.DeactivateConnection);
+        }
     }
 
     
