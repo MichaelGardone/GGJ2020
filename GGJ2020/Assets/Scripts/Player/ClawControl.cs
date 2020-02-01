@@ -16,7 +16,6 @@ public class ClawControl : MonoBehaviour
     {
         if (collider.gameObject.tag == "Source")
         {
-            Debug.Log("asd");
             mi.ConnectedToSource();
         }
         //if(collision.gameObject.TryGetComponent<Outlet>(out Outlet outlet))

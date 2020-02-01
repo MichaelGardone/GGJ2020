@@ -18,8 +18,6 @@ public class MouseInput : MonoBehaviour
     [Tooltip("Acceleration coefficient")]
     public float acceleration = 2.5f;
 
-    public LayerMask mask;
-
     private bool takenHealth = false;
 
     private Vector3 targetPosition;
@@ -118,8 +116,7 @@ public class MouseInput : MonoBehaviour
 
     public void ConnectedToSource()
     {
-        line.material = chargeTether;
-        Debug.Log("asd");
+        line.GetComponent<Renderer>().sharedMaterial = chargeTether;
     }
 
     void CreateTether(RaycastHit hit)
