@@ -6,15 +6,21 @@ using UnityEngine;
 public class PowerConduit : MonoBehaviour
 {
     // Start is called before the first frame update
-    public PowerConduit previousNode;
-    public List<PowerConduit> nextNodes;
-    public bool powered;
-    private bool locked;
+    private PowerConduit previousNode;
+    [Header("Settable Attributes")]
+    public bool isSubCore;
+    public bool isCore;
     [SerializeField] float timeUntilReset;
     [SerializeField] Material lineMaterial;
+    public List<PowerConduit> nextNodes;
+
+    [Header("For Debugging")]
+    public bool powered;
+    [SerializeField] float timer;
+    private bool locked;
     private List<LineRenderer> linksToNext;
 
-    [SerializeField] float timer;
+    
 
     void Start()
     {
@@ -68,7 +74,7 @@ public class PowerConduit : MonoBehaviour
         linksToNext[childPointIndex].SetPositions(new Vector3[] { transform.position, nodeToConnecetTo.transform.position });
     }
 
-    public void UpdateConnections()// call from first in node 
+    public void UpdateConnections()// call from first "in" node 
     {
 
         for (int i = 0; i < nextNodes.Count; i++)
@@ -77,6 +83,11 @@ public class PowerConduit : MonoBehaviour
             nextNodes[i].UpdateConnections();
         }
         
+    }
+
+    public bool GetLockState()
+    {
+        return locked;
     }
 
     private void OnMouseDown()
@@ -100,6 +111,18 @@ public class PowerConduit : MonoBehaviour
             powered = true;
             timer = timeUntilReset;
         }
+        if(isCore && powered)
+        {
+            //doSomething
+            LevelManager._instance.StartResetMasterTimer();
+            locked = true;
+        }
+        else if(isSubCore && powered)
+        {
+            //do something
+            LevelManager._instance.RefreshCoresCompleted();
+            locked = true;
+        }
         return powered;
     }
 
@@ -107,9 +130,14 @@ public class PowerConduit : MonoBehaviour
     {
         if(previousNode == null)
         {
+            if (nextNodes.Count <= 0)
+            {
+                return;
+            }
             Gizmos.color = Color.white;
             Gizmos.DrawWireSphere(transform.position, 1f);
             Gizmos.color = Color.green;
+            
             foreach (PowerConduit conduit in nextNodes)
             {
                 Vector3 directionToNextNode = (conduit.transform.position - transform.position);

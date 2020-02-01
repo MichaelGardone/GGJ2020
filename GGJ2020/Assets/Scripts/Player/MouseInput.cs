@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MouseInput : MonoBehaviour
 {
@@ -8,11 +9,14 @@ public class MouseInput : MonoBehaviour
     public Material mat;
 
     public float tetherDistance = 100f;
-
     public float stepSize = 0.1f;
+
+    private bool takenHealth = false;
 
     private Vector3 targetPosition;
     private Vector3 finalPosition;
+
+    private UnityEvent onNewGrapple;
 
     LineRenderer line;
     GameObject claw;
@@ -20,15 +24,21 @@ public class MouseInput : MonoBehaviour
 
     RaycastHit target;
 
+    HealthSystem hs;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        hs = GetComponent<HealthSystem>();
+
+        AddGrappleListeners();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            onNewGrapple.Invoke();
             if (line == null)
             {
                 RaycastHit hit;
@@ -66,6 +76,12 @@ public class MouseInput : MonoBehaviour
             }
             else
             {
+                if (!takenHealth)
+                {
+                    hs.ModifyHealth(-5);
+                    takenHealth = true;
+                }
+
                 Vector3 dist = (finalPosition - transform.position);
                 if (rb.velocity.magnitude < 25f && dist.magnitude > 2f)
                     rb.AddForce(new Vector3(dist.normalized.x, 0, dist.normalized.z) * 2.5f);
@@ -125,6 +141,7 @@ public class MouseInput : MonoBehaviour
         Destroy(line.gameObject);
         finalPosition = transform.position;
         targetPosition = transform.position;
+        takenHealth = true;
     }
 
     void CreateClaw()
@@ -134,12 +151,21 @@ public class MouseInput : MonoBehaviour
 
         ClawControl c = claw.AddComponent<ClawControl>();
         c.SetMouseInput(this);
-
     }
 
     void DestroyClaw()
     {
         Destroy(claw);
+    }
+
+    void AddGrappleListeners()
+    {
+        Outlet[] levelOutlets = GameObject.FindObjectsOfType<Outlet>();
+        
+        foreach (Outlet o in levelOutlets)
+        {
+            onNewGrapple.AddListener(o.Deactivate);
+        }
     }
 
 }
