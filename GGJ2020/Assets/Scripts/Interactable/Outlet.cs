@@ -8,7 +8,7 @@ public class Outlet : MonoBehaviour
     private HealthSystem targetHealth;
     public static int chargePerTick;
     [SerializeField] int chargePool;
-    private bool inRange;
+    [HideInInspector] public bool inRange;
 
     private int remainingCharge;
     void Start()
@@ -47,19 +47,5 @@ public class Outlet : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-        {
-            inRange = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-        {
-            inRange = false;
-        }
-    }
+    
 }
