@@ -11,10 +11,14 @@ public class ObjectivePointer : MonoBehaviour
     List<Transform> activePointers;
     private int objectiveCoreIndex;
     private Camera cam;
+    RectTransform rect;
+    Transform player;
     //[SerializeField] Transform testUI;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        rect = GetComponent<RectTransform>();
         cam = Camera.main;
 
         activePointers = new List<Transform>();
@@ -77,12 +81,13 @@ public class ObjectivePointer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rect.position = cam.WorldToScreenPoint(player.position);
         for (int i = 0; i < activePointers.Count; i++)
         {
             
             Vector3 canvasPosition = cam.WorldToScreenPoint(subCores[i].transform.position);
             canvasPosition.z = 0;
-            activePointers[i].up = canvasPosition - activePointers[i].position;
+            activePointers[i].up = canvasPosition - Vector3.Scale(new Vector3(1,1,0), activePointers[i].position);
             //Debug.Log(subCores[i].transform.name + " " + i);
             
         }
