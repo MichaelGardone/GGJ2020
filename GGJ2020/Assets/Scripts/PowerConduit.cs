@@ -10,6 +10,7 @@ public class PowerConduit : MonoBehaviour
     public List<PowerConduit> nextNodes;
     public bool powered;
     private bool locked;
+    public bool isCore;
     [SerializeField] float timeUntilReset;
     [SerializeField] Material lineMaterial;
     private List<LineRenderer> linksToNext;
@@ -99,6 +100,10 @@ public class PowerConduit : MonoBehaviour
         {
             powered = true;
             timer = timeUntilReset;
+        }
+        if(isCore && powered)
+        {
+            //doSomething
         }
         return powered;
     }
