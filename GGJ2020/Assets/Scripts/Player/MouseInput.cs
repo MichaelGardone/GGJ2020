@@ -134,10 +134,13 @@ public class MouseInput : MonoBehaviour
         // Transform positions
         line.SetPosition(0, transform.position);
         line.SetPosition(1, targetPosition);
+
+        CreateClaw();
     }
 
     void DestroyTether()
     {
+        DestroyClaw();
         Destroy(line.gameObject);
         finalPosition = transform.position;
         targetPosition = transform.position;
@@ -151,6 +154,13 @@ public class MouseInput : MonoBehaviour
 
         ClawControl c = claw.AddComponent<ClawControl>();
         c.SetMouseInput(this);
+
+        Rigidbody r = claw.AddComponent<Rigidbody>();
+        r.useGravity = false;
+        r.freezeRotation = true;
+
+        BoxCollider b = claw.AddComponent<BoxCollider>();
+        b.size = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     void DestroyClaw()
@@ -166,6 +176,9 @@ public class MouseInput : MonoBehaviour
         {
             onNewGrapple.AddListener(o.Deactivate);
         }
+
+        if (levelOutlets == null)
+            levelOutlets = new Outlet[];
     }
 
 }
