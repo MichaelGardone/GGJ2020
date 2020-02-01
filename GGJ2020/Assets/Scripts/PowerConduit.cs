@@ -92,7 +92,7 @@ public class PowerConduit : MonoBehaviour
 
     private void OnMouseDown()
     {
-        ActivateConduit();
+        //ActivateConduit();
     }
 
     public bool ActivateConduit()

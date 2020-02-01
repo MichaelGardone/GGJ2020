@@ -12,17 +12,17 @@ public class ClawControl : MonoBehaviour
         this.mi = mi;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        //if(collision.gameObject.tag != "BadWall")
-        //{
-        //    mi.SetNewTarget(collision.gameObject.transform.position);
-        //}
+        if (collider.gameObject.tag == "Source")
+        {
+            mi.ConnectedToSource();
+        }
         //if(collision.gameObject.TryGetComponent<Outlet>(out Outlet outlet))
         //{
         //    outlet.SetActiveState(this.GetComponent<HealthSystem>(), true); //is disabled with the onNewGrapple event
         //}
-        if(collision.gameObject.TryGetComponent<PowerConduit>(out PowerConduit conduit))
+        if (collider.gameObject.TryGetComponent<PowerConduit>(out PowerConduit conduit))
         {
             conduit.ActivateConduit();
             

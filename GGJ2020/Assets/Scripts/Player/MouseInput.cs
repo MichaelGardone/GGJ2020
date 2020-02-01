@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Dummy
 public class MouseInput : MonoBehaviour
 {
 
-    public Material mat;
+    public Material standardTether;
+    public Material chargeTether;
 
+    [Tooltip("Max distance the tether can go.")]
     public float tetherDistance = 100f;
+    [Tooltip("How fast the tether moves.")]
     public float stepSize = 0.1f;
+    [Tooltip("Maximum speed of the player.")]
+    public float maxSpeed = 25f;
+    [Tooltip("Acceleration coefficient")]
+    public float acceleration = 2.5f;
 
     private bool takenHealth = false;
 
@@ -32,14 +38,14 @@ public class MouseInput : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         hs = GetComponent<HealthSystem>();
 
-        
+        onNewGrapple = new UnityEvent();
     }
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //onNewGrapple.Invoke(); apparentyl the cord doesn't even have to be attatched?
+            onNewGrapple.Invoke();
             if (line == null)
             {
                 RaycastHit hit;
@@ -74,6 +80,7 @@ public class MouseInput : MonoBehaviour
                 line.SetPosition(0, transform.position);
                 targetPosition = Vector3.MoveTowards(targetPosition, finalPosition, stepSize);
                 line.SetPosition(1, targetPosition);
+                claw.transform.position = targetPosition;
             }
             else
             {
@@ -84,15 +91,10 @@ public class MouseInput : MonoBehaviour
                 }
 
                 Vector3 dist = (finalPosition - transform.position);
-                if (rb.velocity.magnitude < 25f && dist.magnitude > 0.5f)
-                    rb.AddForce(new Vector3(dist.normalized.x, 0, dist.normalized.z) * 2.5f);
+                if (rb.velocity.magnitude < maxSpeed && dist.magnitude > 0.5f)
+                    rb.AddForce(new Vector3(dist.normalized.x, 0, dist.normalized.z) * acceleration);
 
                 line.SetPosition(0, transform.position);
-                
-                if (dist.magnitude < 5f)
-                {
-                    DestroyTether();
-                }
             }
 
             // LOS
@@ -100,18 +102,21 @@ public class MouseInput : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(r, out hit))
             {
-                if (hit.collider != target.collider)
+                if(hit.collider.tag != "Claw")
                 {
-                    targetPosition = transform.position;
-                    DestroyTether();
+                    if (hit.point != target.point)
+                    {
+                        targetPosition = transform.position;
+                        DestroyTether();
+                    }
                 }
             }
         }
     }
 
-    public void SetNewTarget(Vector3 newTarg)
+    public void ConnectedToSource()
     {
-        finalPosition = newTarg;
+        line.GetComponent<Renderer>().sharedMaterial = chargeTether;
     }
 
     void CreateTether(RaycastHit hit)
@@ -128,9 +133,7 @@ public class MouseInput : MonoBehaviour
         // Set up line render aspects
         line.startWidth = 0.25f;
         line.endWidth = 0.25f;
-        line.material = mat;
-        line.startColor = Color.yellow;
-        line.endColor = Color.yellow;
+        line.material = standardTether;
         line.numCapVertices = 2;
 
         // Transform positions
@@ -151,23 +154,34 @@ public class MouseInput : MonoBehaviour
 
     void CreateClaw()
     {
-        GameObject claw = new GameObject("Claw");
+        claw = new GameObject("Claw");
         claw.transform.parent = line.transform;
+        claw.tag = "Claw";
 
         ClawControl c = claw.AddComponent<ClawControl>();
         c.SetMouseInput(this);
 
-        Rigidbody r = claw.AddComponent<Rigidbody>();
-        r.useGravity = false;
-        r.freezeRotation = true;
+        //Rigidbody r = claw.AddComponent<Rigidbody>();
+        //r.useGravity = false;
+        //r.freezeRotation = true;
 
         BoxCollider b = claw.AddComponent<BoxCollider>();
         b.size = new Vector3(0.5f, 0.5f, 0.5f);
+        b.isTrigger = true;
     }
 
     void DestroyClaw()
     {
         Destroy(claw);
+    }
+
+    private void AddListeners()
+    {
+        Outlet[] outlets = FindObjectsOfType<Outlet>();
+        foreach (var item in outlets)
+        {
+            onNewGrapple.AddListener(item.DeactivateConnection);
+        }
     }
 
     
