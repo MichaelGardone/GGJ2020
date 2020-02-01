@@ -9,6 +9,7 @@ TagManager:
   - Source
   - BadWall
   - Enemy
+  - Claw
   layers:
   - Default
   - TransparentFX

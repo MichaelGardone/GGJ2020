@@ -12,9 +12,9 @@ public class ClawControl : MonoBehaviour
         this.mi = mi;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.tag == "Source")
+        if (collider.gameObject.tag == "Source")
         {
             Debug.Log("asd");
             mi.ConnectedToSource();
@@ -23,7 +23,7 @@ public class ClawControl : MonoBehaviour
         //{
         //    outlet.SetActiveState(this.GetComponent<HealthSystem>(), true); //is disabled with the onNewGrapple event
         //}
-        if (collision.gameObject.TryGetComponent<PowerConduit>(out PowerConduit conduit))
+        if (collider.gameObject.TryGetComponent<PowerConduit>(out PowerConduit conduit))
         {
             conduit.ActivateConduit();
             
