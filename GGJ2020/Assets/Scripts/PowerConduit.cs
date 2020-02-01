@@ -8,6 +8,7 @@ public class PowerConduit : MonoBehaviour
     // Start is called before the first frame update
     private PowerConduit previousNode;
     [Header("Settable Attributes")]
+    public bool isSubCore;
     public bool isCore;
     [SerializeField] float timeUntilReset;
     [SerializeField] Material lineMaterial;
@@ -84,6 +85,11 @@ public class PowerConduit : MonoBehaviour
         
     }
 
+    public bool GetLockState()
+    {
+        return locked;
+    }
+
     private void OnMouseDown()
     {
         ActivateConduit();
@@ -108,6 +114,12 @@ public class PowerConduit : MonoBehaviour
         if(isCore && powered)
         {
             //doSomething
+            locked = true;
+        }
+        else if(isSubCore && powered)
+        {
+            //do something
+            locked = true;
         }
         return powered;
     }
@@ -116,9 +128,14 @@ public class PowerConduit : MonoBehaviour
     {
         if(previousNode == null)
         {
+            if (nextNodes.Count <= 0)
+            {
+                return;
+            }
             Gizmos.color = Color.white;
             Gizmos.DrawWireSphere(transform.position, 1f);
             Gizmos.color = Color.green;
+            
             foreach (PowerConduit conduit in nextNodes)
             {
                 Vector3 directionToNextNode = (conduit.transform.position - transform.position);
