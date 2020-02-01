@@ -9,7 +9,7 @@ public class Outlet : MonoBehaviour
     public static int chargePerTick;
     [SerializeField] int chargePool;
     private bool inRange;
-    
+
     private int remainingCharge;
     void Start()
     {
@@ -19,28 +19,45 @@ public class Outlet : MonoBehaviour
     // Update is called once per frame. Fixed is not lmao
     void FixedUpdate()
     {
-        if (inRange && targetHealth.GetHealth() < targetHealth.GetMaxHealth() && remainingCharge > 0)
+        if (inRange && hasActiveConnection && remainingCharge > 0)
         {
             targetHealth.ModifyHealth(chargePerTick);
-            chargePool -= chargePerTick;
+            chargePool -= (int)(chargePerTick * Mathf.Clamp(1 / Vector3.Distance(targetHealth.transform.position, transform.position), 0f, 1f));
         }
     }
 
-    
+    public void SetActiveState(HealthSystem health, bool isActive)
+    {
+        if (isActive)
+        {
+            targetHealth = health;
+            hasActiveConnection = true;
+        }
+        else
+        {
+            targetHealth = null;
+            hasActiveConnection = false;
+        }
+    }
 
-    
+    public void DeactivateConnection()
+    {
+        SetActiveState(null, false);
+    }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
             inRange = true;
-        }   
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
         {
             inRange = false;
         }
