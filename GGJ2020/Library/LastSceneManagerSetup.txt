@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/LetsHaveSomeFun.unity
+=======
+- path: Assets/Scenes/ConduitTest.unity
+>>>>>>> 60e75ded354219abc8dc012f2a0b48dfe2c55e07
   isLoaded: 1
   isActive: 1
   isSubScene: 0
