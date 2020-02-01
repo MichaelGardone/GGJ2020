@@ -104,10 +104,13 @@ public class MouseInput : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(r, out hit))
             {
-                if (hit.collider != target.collider)
+                if(hit.collider.tag != "Claw")
                 {
-                    targetPosition = transform.position;
-                    DestroyTether();
+                    if (hit.point != target.point)
+                    {
+                        targetPosition = transform.position;
+                        DestroyTether();
+                    }
                 }
             }
         }
@@ -156,6 +159,7 @@ public class MouseInput : MonoBehaviour
     {
         claw = new GameObject("Claw");
         claw.transform.parent = line.transform;
+        claw.tag = "Claw";
 
         ClawControl c = claw.AddComponent<ClawControl>();
         c.SetMouseInput(this);
@@ -166,6 +170,7 @@ public class MouseInput : MonoBehaviour
 
         BoxCollider b = claw.AddComponent<BoxCollider>();
         b.size = new Vector3(0.5f, 0.5f, 0.5f);
+        b.isTrigger = true;
     }
 
     void DestroyClaw()
