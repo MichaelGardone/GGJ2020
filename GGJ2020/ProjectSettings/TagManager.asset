@@ -8,6 +8,7 @@ TagManager:
   - Drain
   - Source
   - BadWall
+  - Enemy
   layers:
   - Default
   - TransparentFX

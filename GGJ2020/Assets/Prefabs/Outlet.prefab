@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2390270257763011466}
   - component: {fileID: 6332441209755863932}
   - component: {fileID: 4237688433423888101}
+  - component: {fileID: 4646335273504784857}
   m_Layer: 0
   m_Name: Outlet
   m_TagString: Untagged
@@ -106,3 +107,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargePool: 0
+--- !u!135 &4646335273504784857
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3743165359025805008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
