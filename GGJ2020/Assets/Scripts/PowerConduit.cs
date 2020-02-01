@@ -115,9 +115,11 @@ public class PowerConduit : MonoBehaviour
         {
             //doSomething
             LevelManager._instance.StartResetMasterTimer();
+            LevelManager._instance.objectiveState = 1;
             locked = true;
+            LevelManager._instance.RefreshCoresCompleted();
         }
-        else if(isSubCore && powered)
+        else if(isSubCore && powered && LevelManager._instance.objectiveState == 0)
         {
             //do something
             LevelManager._instance.RefreshCoresCompleted();

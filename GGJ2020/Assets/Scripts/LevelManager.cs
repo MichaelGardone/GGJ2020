@@ -92,8 +92,10 @@ public class LevelManager : MonoBehaviour
             if (c.isSubCore)
             {
                 SubCores.Add(c);
+                //Debug.Log("found core");
             }
         }
+        //Debug.Log(SubCores);
         return SubCores;
     }
 
