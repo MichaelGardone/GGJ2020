@@ -132,25 +132,25 @@ public class PowerConduit : MonoBehaviour
     {
         if(previousNode == null)
         {
-            if (nextNodes.Count <= 0)
+            if (nextNodes.Count > 0)
             {
-                return;
-            }
-            Gizmos.color = Color.white;
-            Gizmos.DrawWireSphere(transform.position, 1f);
-            Gizmos.color = Color.green;
-            
-            foreach (PowerConduit conduit in nextNodes)
-            {
-                Vector3 directionToNextNode = (conduit.transform.position - transform.position);
-                for (int i = 1; i < 6; i++)
+                Gizmos.color = Color.white;
+                Gizmos.DrawWireSphere(transform.position, 1f);
+                Gizmos.color = Color.green;
+
+                foreach (PowerConduit conduit in nextNodes)
                 {
-                    Gizmos.color = Color.Lerp(Color.red, Color.green, (float)i / 5);
-                    Gizmos.DrawWireSphere(transform.position + directionToNextNode * i/5, 1 - .2f*i);
-                    
+                    Vector3 directionToNextNode = (conduit.transform.position - transform.position);
+                    for (int i = 1; i < 6; i++)
+                    {
+                        Gizmos.color = Color.Lerp(Color.red, Color.green, (float)i / 5);
+                        Gizmos.DrawWireSphere(transform.position + directionToNextNode * i / 5, 1 - .2f * i);
+
+                    }
                 }
+                Gizmos.color = Color.white;
             }
-            Gizmos.color = Color.white;
+            
         }
     }
 }
