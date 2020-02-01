@@ -6,16 +6,20 @@ using UnityEngine;
 public class PowerConduit : MonoBehaviour
 {
     // Start is called before the first frame update
-    public PowerConduit previousNode;
-    public List<PowerConduit> nextNodes;
-    public bool powered;
-    private bool locked;
+    private PowerConduit previousNode;
+    [Header("Settable Attributes")]
     public bool isCore;
     [SerializeField] float timeUntilReset;
     [SerializeField] Material lineMaterial;
+    public List<PowerConduit> nextNodes;
+
+    [Header("For Debugging")]
+    public bool powered;
+    [SerializeField] float timer;
+    private bool locked;
     private List<LineRenderer> linksToNext;
 
-    [SerializeField] float timer;
+    
 
     void Start()
     {
