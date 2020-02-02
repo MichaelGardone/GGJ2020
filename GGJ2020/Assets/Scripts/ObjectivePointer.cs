@@ -42,7 +42,7 @@ public class ObjectivePointer : MonoBehaviour
         if (LevelManager._instance.objectiveState == 1)
         {
             transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = SubCorePointerSprite;
-            //Debug.Log(_subCores);
+            Debug.Log("Subcore sprite assigned");
             subCores = _subCores;
             int size = subCores.Count;
             //Debug.Log(subCores.Count);

@@ -143,7 +143,7 @@ public class PowerConduit : MonoBehaviour
             LevelManager._instance.StartResetMasterTimer();
             LevelManager._instance.objectiveState = 1;
             locked = true;
-            //LevelManager._instance.RefreshCoresCompleted();
+            LevelManager._instance.RefreshCoresCompleted();
         }
         else if(isSubCore && powered && previousNode.powered && LevelManager._instance.objectiveState == 1)
         {
