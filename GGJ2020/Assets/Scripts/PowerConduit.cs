@@ -6,7 +6,8 @@ using UnityEngine;
 public class PowerConduit : MonoBehaviour
 {
     // Start is called before the first frame update
-    private PowerConduit previousNode;
+    public PowerConduit previousNode;
+    public Animator anim;
     [Header("Settable Attributes")]
     public bool isSubCore;
     public bool isCore;
@@ -142,13 +143,14 @@ public class PowerConduit : MonoBehaviour
             LevelManager._instance.StartResetMasterTimer();
             LevelManager._instance.objectiveState = 1;
             locked = true;
-            LevelManager._instance.RefreshCoresCompleted();
+            //LevelManager._instance.RefreshCoresCompleted();
         }
-        else if(isSubCore && powered && LevelManager._instance.objectiveState == 0)
+        else if(isSubCore && powered && previousNode.powered && LevelManager._instance.objectiveState == 1)
         {
             //do something
-            LevelManager._instance.RefreshCoresCompleted();
             locked = true;
+            LevelManager._instance.RefreshCoresCompleted();
+            
         }
 
         if (powered)
@@ -158,6 +160,13 @@ public class PowerConduit : MonoBehaviour
         }
         else
             lineMaterial.SetColor("_GlowColor", offLine);
+
+        if(isSubCore && powered)
+        {
+            locked = true;
+        }
+
+        anim.SetBool("On", powered);
 
         return powered;
     }

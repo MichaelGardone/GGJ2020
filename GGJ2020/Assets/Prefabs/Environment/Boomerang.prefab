@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7318593624030601671}
   m_Layer: 0
   m_Name: Boomerang
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2167514231101920719}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.1303, y: 6, z: 12}
-  m_LocalScale: {x: 7, y: 1, z: 1}
+  m_LocalScale: {x: 18, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
