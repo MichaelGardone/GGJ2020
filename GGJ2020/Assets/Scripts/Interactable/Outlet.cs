@@ -14,8 +14,10 @@ public class Outlet : MonoBehaviour
     float tickMod = 1;
 
     private int remainingCharge;
+    private ParticleSystem particles;
     void Start()
     {
+        particles = GetComponent<ParticleSystem>();
         timer = 0;
         remainingCharge = chargePool;
     }
@@ -29,6 +31,10 @@ public class Outlet : MonoBehaviour
             timer = 0;
             targetHealth.ModifyHealth(chargePerTick);
             chargePool -= (int)(chargePerTick * Mathf.Clamp(1 / Vector3.Distance(targetHealth.transform.position, transform.position), 0f, 1f));
+        }
+        if(remainingCharge <=0 && particles.isPlaying)
+        {
+            particles.Stop();
         }
     }
 
