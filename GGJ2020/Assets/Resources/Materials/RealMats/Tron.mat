@@ -87,7 +87,7 @@ Material:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LineColor: {r: 0.30588236, g: 0.30588236, b: 0.30588236, a: 0}
+    - _LineColor: {r: 0.63867724, g: 0.6718801, b: 0.09190815, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SquareColor: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 10, g: 10, b: 0, a: 0}
