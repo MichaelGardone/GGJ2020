@@ -20,7 +20,7 @@ public class HealthSystem : MonoBehaviour
         //if is the player
         if(health > 75)
         {
-            animator.controller.color100;
+            //animator.controller.color100;
         }
         else if (health > 50)
         {
