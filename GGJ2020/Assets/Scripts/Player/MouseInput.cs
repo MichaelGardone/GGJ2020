@@ -35,12 +35,17 @@ public class MouseInput : MonoBehaviour
 
     HealthSystem hs;
 
+    public List<Vector3> targetPositions;
+    Vector3 currTarget;
+    int currPosition = 0;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         hs = GetComponent<HealthSystem>();
 
         onNewGrapple = new UnityEvent();
+        targetPositions = new List<Vector3>();
     }
 
     void Update()
@@ -79,9 +84,20 @@ public class MouseInput : MonoBehaviour
         {
             if(targetPosition != finalPosition)
             {
-                line.SetPosition(0, transform.position);
-                targetPosition = Vector3.MoveTowards(targetPosition, finalPosition, stepSize);
-                line.SetPosition(1, targetPosition);
+                //line.SetPosition(0, transform.position);
+
+                if (targetPosition == currTarget && currPosition < targetPositions.Count - 1)
+                {
+                    //line.SetPosition(currPosition, currTarget);
+                    currPosition++;
+                    currTarget = targetPositions[currPosition];
+                }
+
+                targetPosition = Vector3.MoveTowards(targetPosition, currTarget, stepSize);
+                line.SetPosition(currPosition, targetPosition);
+                for (int i = currPosition; i < line.positionCount; i++)
+                    line.SetPosition(i, targetPosition);
+
                 claw.transform.position = targetPosition;
             }
             else
@@ -96,7 +112,7 @@ public class MouseInput : MonoBehaviour
                 if (rb.velocity.magnitude < maxSpeed && dist.magnitude > 0.5f)
                     rb.AddForce(new Vector3(dist.normalized.x, 0, dist.normalized.z) * acceleration);
 
-                line.SetPosition(0, transform.position);
+                //line.SetPosition(0, transform.position);
             }
 
             // LOS
@@ -136,11 +152,29 @@ public class MouseInput : MonoBehaviour
         line.startWidth = 0.25f;
         line.endWidth = 0.25f;
         line.material = standardTether;
-        line.numCapVertices = 2;
+        line.positionCount = Random.Range(2, 6) + 2;
 
-        // Transform positions
-        line.SetPosition(0, transform.position);
-        line.SetPosition(1, targetPosition);
+        Vector3 perp = Vector3.Cross(finalPosition - transform.position, Vector3.up).normalized;
+        Debug.Log(perp);
+        Vector3 lerp = Vector3.Lerp(transform.position, finalPosition, 1 / line.positionCount).normalized;
+        lerp.y = 0;
+        Debug.Log(lerp);
+        Vector3 lastPos = transform.position;
+
+        float u = Random.Range(-2f, 2f);
+        
+        // -1 = Start, -2 = Start+End
+        for (int i = 0; i < line.positionCount - 1; i++)
+        {
+            lastPos = lastPos + perp + perp * u + lerp * Random.Range(0.1f, 0.8f);
+            lastPos.y = transform.position.y;
+            targetPositions.Add(lastPos);
+            u = Random.Range(-2f - u, 2f - u);
+        }
+        targetPositions[0] = transform.position;
+        targetPositions.Add(new Vector3(finalPosition.x, transform.position.y, finalPosition.z));
+        currTarget = targetPositions[0];
+        line.SetPosition(0, currTarget);
 
         CreateClaw();
     }
@@ -152,6 +186,8 @@ public class MouseInput : MonoBehaviour
         finalPosition = transform.position;
         targetPosition = transform.position;
         takenHealth = false;
+        targetPositions.Clear();
+        currPosition = 0;
     }
 
     void CreateClaw()
