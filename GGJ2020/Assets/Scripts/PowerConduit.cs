@@ -7,6 +7,7 @@ public class PowerConduit : MonoBehaviour
 {
     // Start is called before the first frame update
     public PowerConduit previousNode;
+    public Animator anim;
     [Header("Settable Attributes")]
     public bool isSubCore;
     public bool isCore;
@@ -164,6 +165,8 @@ public class PowerConduit : MonoBehaviour
         {
             locked = true;
         }
+
+        anim.SetBool("On", powered);
 
         return powered;
     }
