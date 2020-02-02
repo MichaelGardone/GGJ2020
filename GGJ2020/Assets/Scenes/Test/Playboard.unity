@@ -10068,6 +10068,11 @@ PrefabInstance:
       propertyPath: InitialModule.startLifetime.scalar
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4611142181784648633, guid: 7e41d86c9fb96714296392723f3a2235,
+        type: 3}
+      propertyPath: SizeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5537927485663485200, guid: 7e41d86c9fb96714296392723f3a2235,
         type: 3}
       propertyPath: m_LocalPosition.x
