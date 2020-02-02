@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTether: {fileID: 2100000, guid: 57a161b4624ab9c4c9f32da5190facf5, type: 2}
   chargeTether: {fileID: 2100000, guid: 4858c1303e0f5734a96843737917115e, type: 2}
-  tetherDistance: 20
+  tetherDistance: 30
   stepSize: 1
   maxSpeed: 50
   acceleration: 15

@@ -4709,7 +4709,11 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6681f42c523d35b4695113ae5782f4bb, type: 2}
+<<<<<<< Updated upstream
+  - {fileID: 2100000, guid: a7fe0966a98f0414abf26bd962b4986a, type: 2}
+=======
+  - {fileID: 2100000, guid: 1acd733efef396e4fb1594cf787d095f, type: 2}
+>>>>>>> Stashed changes
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
