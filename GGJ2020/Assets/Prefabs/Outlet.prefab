@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4237688433423888101}
   - component: {fileID: 4611142181784648633}
   - component: {fileID: 6946931273717553429}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Outlet
   m_TagString: Source
   m_Icon: {fileID: 0}
