@@ -6,7 +6,7 @@ public class Outlet : MonoBehaviour
 {
     private bool hasActiveConnection;
     private HealthSystem targetHealth;
-    public static int chargePerTick;
+    public static int chargePerTick = 3;
     [SerializeField] int chargePool;
     [HideInInspector] public bool inRange;
 
@@ -19,7 +19,7 @@ public class Outlet : MonoBehaviour
     // Update is called once per frame. Fixed is not lmao
     void FixedUpdate()
     {
-        if (inRange && hasActiveConnection && remainingCharge > 0)
+        if (inRange && hasActiveConnection && remainingCharge > 0 && targetHealth.GetHealth() != targetHealth.GetMaxHealth())
         {
             targetHealth.ModifyHealth(chargePerTick);
             chargePool -= (int)(chargePerTick * Mathf.Clamp(1 / Vector3.Distance(targetHealth.transform.position, transform.position), 0f, 1f));
