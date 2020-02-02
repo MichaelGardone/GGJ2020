@@ -114,6 +114,7 @@ MonoBehaviour:
   stepSize: 1
   maxSpeed: 50
   acceleration: 15
+  tetherCost: 5
 --- !u!54 &1270442860411379790
 Rigidbody:
   m_ObjectHideFlags: 0
