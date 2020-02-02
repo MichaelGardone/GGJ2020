@@ -20,10 +20,18 @@ public class PowerConduit : MonoBehaviour
     private bool locked;
     private List<LineRenderer> linksToNext;
 
-    
+    private Color red = Color.red;
+    private Color yellow = Color.yellow;
+
+    private Vector2 offset;
+
+    MeshRenderer mr;
 
     void Start()
     {
+        offset = new Vector2(Random.Range(0, 500), Random.Range(0, 500));
+        StartCoroutine(MakeCool());
+        mr = GetComponent<MeshRenderer>();
         timer = 0;
         linksToNext = new List<LineRenderer>();
         if (nextNodes.Count > 0)
@@ -50,8 +58,8 @@ public class PowerConduit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        mr.material.SetVector("_NoiseOffset", offset);
         
-
         if (timer > 0)
         {
             if (!locked) { timer -= Time.deltaTime; }
@@ -59,6 +67,7 @@ public class PowerConduit : MonoBehaviour
         }
         else if(powered)
         {
+            mr.material.SetColor("_GlowColor", red);
             timer = 0;
             powered = false;
             if (previousNode)
@@ -125,6 +134,10 @@ public class PowerConduit : MonoBehaviour
             LevelManager._instance.RefreshCoresCompleted();
             locked = true;
         }
+
+        if(powered)
+            mr.material.SetColor("_GlowColor", yellow);
+
         return powered;
     }
 
@@ -153,4 +166,19 @@ public class PowerConduit : MonoBehaviour
             
         }
     }
+
+    IEnumerator MakeCool()
+    {
+        while(true)
+        {
+            offset.x += Random.Range(0, 10);
+            if (offset.x > 750)
+                offset.x = 0;
+            offset.y += Random.Range(0, 10);
+            if (offset.y > 750)
+                offset.y = 0;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
 }

@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 44d2ac111a83de94f8277033ea3701ff, type: 2}
+  - {fileID: 2100000, guid: 306d815ab2121dd42a2e71e1bd5bd09d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 366ed7e5665f51140b2fb92e6df4488a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standardTether: {fileID: 2100000, guid: 47e6f8ce93dc06a4296987cd5529c172, type: 2}
-  chargeTether: {fileID: 2100000, guid: 0d68a284de953354280703e12b6e3355, type: 2}
+  standardTether: {fileID: 2100000, guid: 57a161b4624ab9c4c9f32da5190facf5, type: 2}
+  chargeTether: {fileID: 2100000, guid: 4858c1303e0f5734a96843737917115e, type: 2}
   tetherDistance: 50
   stepSize: 1
   maxSpeed: 25

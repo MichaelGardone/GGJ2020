@@ -169,7 +169,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17a3c96a767ba5549a2dce511c1d2b10, type: 2}
+  - {fileID: 2100000, guid: 6313039f6a34755489795bea265c8b6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -261,7 +261,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1ac885ddf8e41f041857ffc2bf1a25bf, type: 2}
+  - {fileID: 2100000, guid: 5df44fc3a9838f347aed574b41f085d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -428,7 +428,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 390fec983eb7bd24995552ef1dce7588, type: 2}
+  - {fileID: 2100000, guid: 53acd96b9b692604c885d95c11e130f5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -611,7 +611,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7482aa013914bb140a28a16027f0f264, type: 2}
+  - {fileID: 2100000, guid: 014bfd3c042911843b7e6b504bf7ae8a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -721,11 +721,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1270442860411379791, guid: 86a34017fb2acfb46acc0d79962f757b,
-        type: 3}
-      propertyPath: mask.m_Bits
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86a34017fb2acfb46acc0d79962f757b, type: 3}
 --- !u!1001 &6135952802182852324
@@ -739,21 +734,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 686610566}
-    - target: {fileID: 5317804840428984341, guid: c13c01c44ded53f40bac4e997905c1b7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317804840428984341, guid: c13c01c44ded53f40bac4e997905c1b7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5317804840428984341, guid: c13c01c44ded53f40bac4e997905c1b7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6135952802386350926, guid: c13c01c44ded53f40bac4e997905c1b7,
         type: 3}
       propertyPath: m_Name

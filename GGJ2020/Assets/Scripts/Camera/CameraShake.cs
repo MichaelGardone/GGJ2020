@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraShake : MonoBehaviour
 {
+    bool shake = false;
+
     public IEnumerator Shake(float duration, float magnitude)
     {
         Debug.Log("hellO!");
