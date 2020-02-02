@@ -10058,21 +10058,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Outlet
       objectReference: {fileID: 0}
-    - target: {fileID: 4611142181784648633, guid: 7e41d86c9fb96714296392723f3a2235,
-        type: 3}
-      propertyPath: lengthInSec
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611142181784648633, guid: 7e41d86c9fb96714296392723f3a2235,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4611142181784648633, guid: 7e41d86c9fb96714296392723f3a2235,
-        type: 3}
-      propertyPath: SizeModule.enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5537927485663485200, guid: 7e41d86c9fb96714296392723f3a2235,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10128,11 +10113,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6946931273717553429, guid: 7e41d86c9fb96714296392723f3a2235,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c6aa5f7089280247a3a1e1dac6f567d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e41d86c9fb96714296392723f3a2235, type: 3}
 --- !u!1001 &1319547620
@@ -10874,6 +10854,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1184000482}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7298875808304878200, guid: 63370d2507d753d4fa70eb54e51a1e0e,
         type: 3}
       propertyPath: m_Name
