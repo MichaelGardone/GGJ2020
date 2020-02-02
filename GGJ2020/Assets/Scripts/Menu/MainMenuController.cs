@@ -55,6 +55,15 @@ public class MainMenuController : MonoBehaviour
         settingsMenu.SetActive(false);
     }
 
+    public void QuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
     public IEnumerator LoadNextWithDelay()
     {
         float timer = 0f;
@@ -73,4 +82,5 @@ public class MainMenuController : MonoBehaviour
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
 }
