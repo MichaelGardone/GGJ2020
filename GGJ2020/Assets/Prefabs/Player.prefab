@@ -121,6 +121,8 @@ MonoBehaviour:
   acceleration: 15
   tetherCost: 5
   targetPositions: []
+  GrappleHit: {fileID: 8300000, guid: 4a71b52ce34d79341910cbda2d18cc6f, type: 3}
+  GrappleRelease: {fileID: 8300000, guid: 4a71b52ce34d79341910cbda2d18cc6f, type: 3}
 --- !u!54 &1270442860411379790
 Rigidbody:
   m_ObjectHideFlags: 0
