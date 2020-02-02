@@ -106,7 +106,7 @@ public class PowerConduit : MonoBehaviour
 
     public bool ActivateConduit()
     {
-        if (previousNode && (isCore || LevelManager._instance.objectiveState == 1))
+        if (previousNode && (LevelManager._instance.objectiveState == 1))
         {
             if (previousNode.powered)
             {
@@ -114,6 +114,10 @@ public class PowerConduit : MonoBehaviour
                 powered = true;
                 timer = timeUntilReset;
             }
+        }
+        else if (isCore)
+        {
+            powered = true;
         }
         else if(LevelManager._instance.objectiveState == 1)
         {
