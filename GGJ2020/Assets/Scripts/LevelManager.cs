@@ -140,7 +140,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("YOU WIN");
             hasWon = true;
-            LevelManager._instance.LoadNextWithDelay();// win condition?
+            StartCoroutine(LevelManager._instance.LoadNextWithDelay());// win condition?
         }
 
         pointers.RefreshObjectives(SubCores);
