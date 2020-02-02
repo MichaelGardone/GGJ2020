@@ -114,19 +114,19 @@ public class MouseInput : MonoBehaviour
             }
 
             // LOS
-            Ray r = new Ray(transform.position, target.point - transform.position);
-            RaycastHit hit;
-            if (Physics.Raycast(r, out hit))
-            {
-                if(hit.collider.tag != "Claw")
-                {
-                    if (hit.point != target.point)
-                    {
-                        targetPosition = transform.position;
-                        DestroyTether();
-                    }
-                }
-            }
+            //Ray r = new Ray(transform.position, target.point - transform.position);
+            //RaycastHit hit;
+            //if (Physics.Raycast(r, out hit))
+            //{
+            //    if(hit.collider.tag != "Claw")
+            //    {
+            //        if (hit.point != target.point)
+            //        {
+            //            targetPosition = transform.position;
+            //            DestroyTether();
+            //        }
+            //    }
+            //}
         }
     }
 
