@@ -94,7 +94,7 @@ public class LevelManager : MonoBehaviour
             if (c.isSubCore)
             {
                 SubCores.Add(c);
-                //Debug.Log("found core");
+                Debug.Log("found core");
             }
         }
         //Debug.Log(SubCores);
@@ -120,17 +120,22 @@ public class LevelManager : MonoBehaviour
     public void RefreshCoresCompleted()
     {
         int i = 0;
+        SubCores = FindSubCores();
+        Debug.Log(SubCores[0].GetLockState());
         foreach (PowerConduit subCore in SubCores)
         {
-            if (subCore.GetLockState())
+            if (subCore.GetLockState() == true)
             {
+                Debug.LogError("Add sub core");
                 i++;
             }
         }
         coresCompleted = i;
+        Debug.Log("Cores Complete: " + coresCompleted + " out of " + (SubCores.Count));
 
-        if(coresCompleted >= SubCores.Count - 1)
+        if(coresCompleted >= SubCores.Count)
         {
+            Debug.Log("YOU WIN");
             LevelManager._instance.LoadNextWithDelay();// win condition?
         }
 

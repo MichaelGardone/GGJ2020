@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4237688433423888101}
   - component: {fileID: 4611142181784648633}
   - component: {fileID: 6946931273717553429}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Outlet
   m_TagString: Source
   m_Icon: {fileID: 0}
@@ -4971,8 +4971,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatteryPack
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6606929772652243437, guid: d48bf903df5c17e4888d4b167838e91e, type: 3}
+    - target: {fileID: 1739880368909041571, guid: d48bf903df5c17e4888d4b167838e91e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787183191194450898, guid: d48bf903df5c17e4888d4b167838e91e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787183192135708824, guid: d48bf903df5c17e4888d4b167838e91e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787183192245724432, guid: d48bf903df5c17e4888d4b167838e91e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606929772652243437, guid: d48bf903df5c17e4888d4b167838e91e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d48bf903df5c17e4888d4b167838e91e, type: 3}
 --- !u!4 &650596420666159312 stripped
 Transform:

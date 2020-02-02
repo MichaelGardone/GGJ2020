@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8950320881434425084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 529100536d2ce85428c8cd99695388bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,10 +105,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd99e2efa5003404fa060f25e7a043fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previousNode: {fileID: 0}
-  nextNodes:
-  - {fileID: 0}
-  powered: 0
+  isSubCore: 0
+  isCore: 1
   timeUntilReset: 10
-  lineMaterial: {fileID: 2100000, guid: 173e97674e66e5245ae74e74ac7fca7a, type: 2}
+  lineMaterial: {fileID: 2100000, guid: bcbaffd9be7b0ca48b79c0fb39a8f0af, type: 2}
+  nextNodes: []
+  powered: 0
   timer: 0
+  offLine: {r: 0, g: 0.44705883, b: 2, a: 4}
+  onLine: {r: 0.74509805, g: 2, b: 1.6862745, a: 4}
+  onBox: {r: 0.10849059, g: 0.6497153, b: 1, a: 0}
+  offBox: {r: 0.04919211, g: 0.45342284, b: 0.44437292, a: 0}
