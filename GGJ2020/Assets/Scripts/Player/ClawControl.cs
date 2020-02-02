@@ -7,6 +7,13 @@ public class ClawControl : MonoBehaviour
 
     private MouseInput mi;
 
+
+    
+    
+    private void Start()
+    {
+        
+    }
     public void SetMouseInput(MouseInput mi)
     {
         this.mi = mi;

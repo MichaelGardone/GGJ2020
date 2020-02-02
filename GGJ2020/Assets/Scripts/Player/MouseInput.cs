@@ -42,8 +42,13 @@ public class MouseInput : MonoBehaviour
     float timer = 0;
     float timeToStraighten = 0.25f;
 
+    [SerializeField] AudioClip GrappleHit;
+    [SerializeField] AudioClip GrappleRelease;
+    private AudioSource source;
+
     private void Start()
     {
+        source = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         hs = GetComponent<HealthSystem>();
 
@@ -88,6 +93,7 @@ public class MouseInput : MonoBehaviour
 
             if(targetPosition != finalPosition)
             {
+                line.SetPosition(0, transform.position);
                 targetPosition = Vector3.MoveTowards(targetPosition, finalPosition, stepSize);
                 line.SetPosition(1, targetPosition);
                 claw.transform.position = targetPosition;
@@ -192,6 +198,7 @@ public class MouseInput : MonoBehaviour
 
     void DestroyTether()
     {
+        source.PlayOneShot(GrappleRelease, .2f);
         DestroyClaw();
         Destroy(line.gameObject);
         finalPosition = transform.position;
@@ -203,6 +210,8 @@ public class MouseInput : MonoBehaviour
 
     void CreateClaw()
     {
+        source.PlayOneShot(GrappleHit, .5f);
+        //claw.AddComponent<AudioSource>();
         claw = new GameObject("Claw");
         claw.transform.parent = line.transform;
         claw.tag = "Claw";

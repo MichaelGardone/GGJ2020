@@ -348,6 +348,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1270442860411379791, guid: 86a34017fb2acfb46acc0d79962f757b,
+        type: 3}
+      propertyPath: GrappleHit
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a71b52ce34d79341910cbda2d18cc6f, type: 3}
+    - target: {fileID: 1270442860411379791, guid: 86a34017fb2acfb46acc0d79962f757b,
+        type: 3}
+      propertyPath: GrappleRelease
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a71b52ce34d79341910cbda2d18cc6f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86a34017fb2acfb46acc0d79962f757b, type: 3}
 --- !u!1001 &192574635
@@ -992,7 +1002,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-110170
+  m_Name: pb_Mesh-13274
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1155,7 +1165,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-127732
+  m_Name: pb_Mesh-13536
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2465,7 +2475,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-125762
+  m_Name: pb_Mesh-13248
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
