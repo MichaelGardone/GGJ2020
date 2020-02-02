@@ -205,7 +205,6 @@ public class MouseInput : MonoBehaviour
         }
         targetPositions[0] = transform.position;
         targetPositions.Add(new Vector3(finalPosition.x, transform.position.y, finalPosition.z));
-        Debug.Log(targetPositions[line.positionCount - 1]);
         currTarget = targetPositions[0];
         line.SetPosition(0, currTarget);
 
