@@ -326,6 +326,10 @@ PrefabInstance:
       propertyPath: isCore
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1288706627, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
+      propertyPath: timeUntilReset
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 8950320881434425080, guid: ef52bc7e8fb1c604e8fb212367ce2f2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1587,6 +1591,10 @@ PrefabInstance:
       propertyPath: isCore
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1288706627, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
+      propertyPath: timeUntilReset
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 8950320881434425080, guid: ef52bc7e8fb1c604e8fb212367ce2f2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1876,7 +1884,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh111926
+  m_Name: pb_Mesh137886
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4125,7 +4133,7 @@ GameObject:
   - component: {fileID: 484178404}
   m_Layer: 0
   m_Name: Wall (13)
-  m_TagString: BadWall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5745,7 +5753,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh112140
+  m_Name: pb_Mesh138144
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7019,7 +7027,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh111790
+  m_Name: pb_Mesh137742
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7195,6 +7203,10 @@ PrefabInstance:
       propertyPath: isCore
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1288706627, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
+      propertyPath: timeUntilReset
+      value: 100000
+      objectReference: {fileID: 0}
     - target: {fileID: 8950320881434425080, guid: ef52bc7e8fb1c604e8fb212367ce2f2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7298,6 +7310,10 @@ PrefabInstance:
     - target: {fileID: 1288706627, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
       propertyPath: isCore
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1288706627, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
+      propertyPath: timeUntilReset
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 8950320881434425080, guid: ef52bc7e8fb1c604e8fb212367ce2f2e,
         type: 3}
@@ -8879,6 +8895,10 @@ PrefabInstance:
       propertyPath: isCore
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1288706627, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
+      propertyPath: timeUntilReset
+      value: 1000000
+      objectReference: {fileID: 0}
     - target: {fileID: 8950320881434425080, guid: ef52bc7e8fb1c604e8fb212367ce2f2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9524,7 +9544,7 @@ GameObject:
   - component: {fileID: 1084241270}
   m_Layer: 0
   m_Name: Wall (1)
-  m_TagString: BadWall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10260,7 +10280,7 @@ GameObject:
   - component: {fileID: 1193632818}
   m_Layer: 0
   m_Name: Wall (10)
-  m_TagString: BadWall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12898,7 +12918,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh111950
+  m_Name: pb_Mesh137914
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16367,7 +16387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1288706627, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
       propertyPath: timeUntilReset
-      value: 10
+      value: 1e+9
       objectReference: {fileID: 0}
     - target: {fileID: 1288706627, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
       propertyPath: isSubCore
@@ -16715,6 +16735,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7320439084664828593, guid: 2d6d89fc42ca1c44caaebbc21017e80c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 53acd96b9b692604c885d95c11e130f5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d6d89fc42ca1c44caaebbc21017e80c, type: 3}
 --- !u!1001 &1902000546
@@ -17984,7 +18009,7 @@ GameObject:
   - component: {fileID: 2005884426}
   m_Layer: 0
   m_Name: Wall (12)
-  m_TagString: BadWall
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
