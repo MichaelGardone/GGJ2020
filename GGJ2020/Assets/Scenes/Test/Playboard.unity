@@ -6971,6 +6971,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 326150277}
+    - target: {fileID: 879164843, guid: c13c01c44ded53f40bac4e997905c1b7, type: 3}
+      propertyPath: offset.y
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6135952802386350926, guid: c13c01c44ded53f40bac4e997905c1b7,
         type: 3}
       propertyPath: m_Name
@@ -8478,6 +8482,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerConduit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8950320881434425086, guid: ef52bc7e8fb1c604e8fb212367ce2f2e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 529100536d2ce85428c8cd99695388bc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
 --- !u!4 &1130464545 stripped
@@ -10165,7 +10174,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5df44fc3a9838f347aed574b41f085d9, type: 2}
+      objectReference: {fileID: 2100000, guid: 529100536d2ce85428c8cd99695388bc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef52bc7e8fb1c604e8fb212367ce2f2e, type: 3}
 --- !u!43 &1319861122
