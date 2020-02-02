@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public static float loadCurrentTime = 2;
     private List<PowerConduit> SubCores;
     private int coresCompleted;
-    private float timer;
+    public float timer;
     private bool timerRunning;
     private ObjectivePointer pointers;
 
