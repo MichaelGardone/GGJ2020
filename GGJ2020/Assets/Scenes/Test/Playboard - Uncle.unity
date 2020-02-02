@@ -8327,6 +8327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1270442860411379789, guid: 86a34017fb2acfb46acc0d79962f757b,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1405460068}
     - target: {fileID: 5287973946795686075, guid: 86a34017fb2acfb46acc0d79962f757b,
         type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -8906,6 +8911,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63370d2507d753d4fa70eb54e51a1e0e, type: 3}
+--- !u!198 &1405460068 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1877086234617795753, guid: 86a34017fb2acfb46acc0d79962f757b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1319274845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1440321434
 PrefabInstance:
   m_ObjectHideFlags: 0
