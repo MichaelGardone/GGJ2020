@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e8297f67bb7aa40abd1b52c6510233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AmbientBeat: {fileID: 8300000, guid: 1c78a1507ddc45a46b0221356dfbeaf6, type: 3}
+  AmbientBeat: {fileID: 8300000, guid: a9c20d64bda3b524fa587ec842f4c82c, type: 3}
   Music: {fileID: 8300000, guid: 1c78a1507ddc45a46b0221356dfbeaf6, type: 3}
 --- !u!1 &3111798099668427742
 GameObject:

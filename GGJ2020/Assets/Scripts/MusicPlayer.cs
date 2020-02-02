@@ -25,6 +25,8 @@ public class MusicPlayer : MonoBehaviour
     {
         if(LevelManager._instance.objectiveState == 1 && source.clip == AmbientBeat)
         {
+            source.Stop();
+            source.Play();
             source.clip = Music;
         }
     }

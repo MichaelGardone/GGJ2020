@@ -166,7 +166,7 @@ public class PowerConduit : MonoBehaviour
             locked = true;
         }
 
-        anim.SetBool("On", powered);
+        //anim.SetBool("On", powered);
 
         return powered;
     }
