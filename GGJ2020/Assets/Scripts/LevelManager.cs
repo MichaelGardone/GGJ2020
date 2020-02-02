@@ -8,13 +8,15 @@ public class LevelManager : MonoBehaviour
     [Tooltip("The time (in seconds) that the player has to complete the level after activating the main core")]
     [SerializeField] float masterTimerValue;
     public int objectiveState; //0 is pre core activation, 1 is post core activation
-    public static float loadNextTime = 2;
-    public static float loadCurrentTime = 2;
+    public static float loadNextTime = 4;
+    public static float loadCurrentTime = 4;
     private List<PowerConduit> SubCores;
     private int coresCompleted;
     public float timer;
     private bool timerRunning;
     private ObjectivePointer pointers;
+    public bool hasWon;
+    public bool hasLost;
 
     public static LevelManager _instance;
     private void Awake()
@@ -51,7 +53,7 @@ public class LevelManager : MonoBehaviour
     {
         Debug.Log("StartAsync");
         yield return new WaitForSeconds(loadNextTime);
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(0); //loads menu
         //asyncLoad.allowSceneActivation = false;
 
         while (!asyncLoad.isDone)
@@ -64,6 +66,7 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator ReloadWithDelay()
     {
+        hasLost = true;
         Debug.Log("StartAsync");
         yield return new WaitForSeconds(loadCurrentTime);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
@@ -136,6 +139,7 @@ public class LevelManager : MonoBehaviour
         if(coresCompleted >= SubCores.Count)
         {
             Debug.Log("YOU WIN");
+            hasWon = true;
             LevelManager._instance.LoadNextWithDelay();// win condition?
         }
 
