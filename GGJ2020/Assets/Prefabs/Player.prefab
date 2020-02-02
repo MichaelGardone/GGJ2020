@@ -89,7 +89,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1270442860411379780}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bfa21d67e11c1ca4bbba43404b3baa4c, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -110,10 +110,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTether: {fileID: 2100000, guid: 57a161b4624ab9c4c9f32da5190facf5, type: 2}
   chargeTether: {fileID: 2100000, guid: 4858c1303e0f5734a96843737917115e, type: 2}
-  tetherDistance: 50
+  tetherDistance: 20
   stepSize: 1
-  maxSpeed: 25
-  acceleration: 2.5
+  maxSpeed: 50
+  acceleration: 15
+  tetherCost: 5
 --- !u!54 &1270442860411379790
 Rigidbody:
   m_ObjectHideFlags: 0
