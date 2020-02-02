@@ -15,6 +15,9 @@ public class ObjectivePointer : MonoBehaviour
     Transform player;
     //[SerializeField] Transform testUI;
 
+    [SerializeField] Sprite CorePointerSprite;
+    [SerializeField] Sprite SubCorePointerSprite;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -23,6 +26,8 @@ public class ObjectivePointer : MonoBehaviour
 
         activePointers = new List<Transform>();
         activePointers.Add(transform.GetChild(0));
+
+        transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = CorePointerSprite;
 
         mainCore = LevelManager._instance.FindMainCore();
         //subCores = LevelManager._instance.FindSubCores();
@@ -36,6 +41,7 @@ public class ObjectivePointer : MonoBehaviour
     {
         if (LevelManager._instance.objectiveState == 1)
         {
+            transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = SubCorePointerSprite;
             //Debug.Log(_subCores);
             subCores = _subCores;
             int size = subCores.Count;

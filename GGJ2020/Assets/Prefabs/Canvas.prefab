@@ -527,6 +527,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efbbdabc8c28d14ca8cf7e6f16a4ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CorePointerSprite: {fileID: 6022436960528655665, guid: ec7819f47b85bdc479789ab86e37cbda,
+    type: 3}
+  SubCorePointerSprite: {fileID: 5992589420820395160, guid: ec7819f47b85bdc479789ab86e37cbda,
+    type: 3}
 --- !u!1 &8657725139367256314
 GameObject:
   m_ObjectHideFlags: 0

@@ -13674,6 +13674,18 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3111798099668427740, guid: 10a0447edd7d5324f83fd2fb2e114953,
+        type: 3}
+      propertyPath: CorePointerSprite
+      value: 
+      objectReference: {fileID: 6022436960528655665, guid: ec7819f47b85bdc479789ab86e37cbda,
+        type: 3}
+    - target: {fileID: 3111798099668427740, guid: 10a0447edd7d5324f83fd2fb2e114953,
+        type: 3}
+      propertyPath: SubCorePointerSprite
+      value: 
+      objectReference: {fileID: 5992589420820395160, guid: ec7819f47b85bdc479789ab86e37cbda,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10a0447edd7d5324f83fd2fb2e114953, type: 3}
 --- !u!4 &1751017575 stripped
