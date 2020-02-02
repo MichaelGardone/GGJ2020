@@ -20,10 +20,19 @@ public class PowerConduit : MonoBehaviour
     private bool locked;
     private List<LineRenderer> linksToNext;
 
-    private Color red = Color.red;
-    private Color yellow = Color.yellow;
-
     private Vector2 offset;
+
+    [ColorUsage(true, true)]
+    public Color offLine;
+
+    [ColorUsage(true, true)]
+    public Color onLine;
+
+    [ColorUsage(true, true)]
+    public Color onBox;
+
+    [ColorUsage(true, true)]
+    public Color offBox;
 
     MeshRenderer mr;
 
@@ -68,7 +77,7 @@ public class PowerConduit : MonoBehaviour
         else if(powered)
         {
             Debug.Log("Ran out of time for conduit");
-            mr.material.SetColor("_GlowColor", red);
+            mr.material.SetColor("_GlowColor", offBox);
             timer = 0;
             powered = false;
             if (previousNode)
@@ -142,8 +151,13 @@ public class PowerConduit : MonoBehaviour
             locked = true;
         }
 
-        if(powered)
-            mr.material.SetColor("_GlowColor", yellow);
+        if (powered)
+        {
+            mr.material.SetColor("_GlowColor", onBox);
+            lineMaterial.SetColor("_GlowColor", onLine);
+        }
+        else
+            lineMaterial.SetColor("_GlowColor", offLine);
 
         return powered;
     }
