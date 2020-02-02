@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5809613012519637482}
   - component: {fileID: 5335866852674916841}
   - component: {fileID: 6952459149679559658}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8848c5476d290ad43a7d0eb359752406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargePool: 20000000
+  chargePool: 200000000
   inRange: 0
 --- !u!198 &4611142181784648633
 ParticleSystem:
@@ -4970,26 +4970,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BatteryPack
-      objectReference: {fileID: 0}
-    - target: {fileID: 1739880368909041571, guid: d48bf903df5c17e4888d4b167838e91e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787183191194450898, guid: d48bf903df5c17e4888d4b167838e91e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787183192135708824, guid: d48bf903df5c17e4888d4b167838e91e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3787183192245724432, guid: d48bf903df5c17e4888d4b167838e91e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6606929772652243437, guid: d48bf903df5c17e4888d4b167838e91e,
         type: 3}
