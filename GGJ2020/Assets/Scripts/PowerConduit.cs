@@ -67,6 +67,7 @@ public class PowerConduit : MonoBehaviour
         }
         else if(powered)
         {
+            Debug.Log("Ran out of time for conduit");
             mr.material.SetColor("_GlowColor", red);
             timer = 0;
             powered = false;
@@ -106,7 +107,7 @@ public class PowerConduit : MonoBehaviour
 
     public bool ActivateConduit()
     {
-        if (previousNode && (isCore || LevelManager._instance.objectiveState == 1))
+        if (previousNode && (LevelManager._instance.objectiveState == 1))
         {
             if (previousNode.powered)
             {
@@ -114,6 +115,12 @@ public class PowerConduit : MonoBehaviour
                 powered = true;
                 timer = timeUntilReset;
             }
+        }
+        if (isCore)
+        {
+            Debug.Log("IS CORE");
+            powered = true;
+            timer = timeUntilReset;
         }
         else if(LevelManager._instance.objectiveState == 1)
         {

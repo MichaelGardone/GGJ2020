@@ -18,6 +18,8 @@ public class MouseInput : MonoBehaviour
     [Tooltip("Acceleration coefficient")]
     public float acceleration = 2.5f;
 
+    public int tetherCost = 5;
+
     private bool takenHealth = false;
 
     private Vector3 targetPosition;
@@ -86,7 +88,7 @@ public class MouseInput : MonoBehaviour
             {
                 if (!takenHealth)
                 {
-                    hs.ModifyHealth(-5);
+                    hs.ModifyHealth(-tetherCost);
                     takenHealth = true;
                 }
 
@@ -149,7 +151,7 @@ public class MouseInput : MonoBehaviour
         Destroy(line.gameObject);
         finalPosition = transform.position;
         targetPosition = transform.position;
-        takenHealth = true;
+        takenHealth = false;
     }
 
     void CreateClaw()
@@ -160,10 +162,6 @@ public class MouseInput : MonoBehaviour
 
         ClawControl c = claw.AddComponent<ClawControl>();
         c.SetMouseInput(this);
-
-        //Rigidbody r = claw.AddComponent<Rigidbody>();
-        //r.useGravity = false;
-        //r.freezeRotation = true;
 
         BoxCollider b = claw.AddComponent<BoxCollider>();
         b.size = new Vector3(0.5f, 0.5f, 0.5f);

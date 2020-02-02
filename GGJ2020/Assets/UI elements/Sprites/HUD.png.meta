@@ -146,9 +146,9 @@ TextureImporter:
       name: Battery100
       rect:
         serializedVersion: 2
-        x: 85
+        x: 77
         y: 803
-        width: 343
+        width: 370
         height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -167,10 +167,10 @@ TextureImporter:
       name: PointMain
       rect:
         serializedVersion: 2
-        x: 551
-        y: 547
-        width: 414
-        height: 415
+        x: 545
+        y: 540
+        width: 430
+        height: 430
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,9 +188,9 @@ TextureImporter:
       name: Battery075
       rect:
         serializedVersion: 2
-        x: 84
+        x: 77
         y: 616
-        width: 343
+        width: 370
         height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -209,9 +209,9 @@ TextureImporter:
       name: Battery050
       rect:
         serializedVersion: 2
-        x: 84
+        x: 77
         y: 430
-        width: 343
+        width: 370
         height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -230,9 +230,9 @@ TextureImporter:
       name: Battery025
       rect:
         serializedVersion: 2
-        x: 83
+        x: 77
         y: 240
-        width: 343
+        width: 370
         height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -251,10 +251,10 @@ TextureImporter:
       name: PointSub
       rect:
         serializedVersion: 2
-        x: 548
-        y: 38
-        width: 414
-        height: 415
+        x: 539
+        y: 31
+        width: 430
+        height: 430
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -272,9 +272,9 @@ TextureImporter:
       name: Battery000
       rect:
         serializedVersion: 2
-        x: 85
+        x: 77
         y: 53
-        width: 343
+        width: 370
         height: 170
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
