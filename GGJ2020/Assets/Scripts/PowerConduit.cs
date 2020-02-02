@@ -20,10 +20,14 @@ public class PowerConduit : MonoBehaviour
     private bool locked;
     private List<LineRenderer> linksToNext;
 
-    
+    private Color red = Color.red;
+    private Color yellow = Color.yellow;
+
+    MeshRenderer mr;
 
     void Start()
     {
+        mr = GetComponent<MeshRenderer>();
         timer = 0;
         linksToNext = new List<LineRenderer>();
         if (nextNodes.Count > 0)
@@ -59,6 +63,7 @@ public class PowerConduit : MonoBehaviour
         }
         else if(powered)
         {
+            mr.material.SetColor("_GlowColor", red);
             timer = 0;
             powered = false;
             if (previousNode)
@@ -125,6 +130,10 @@ public class PowerConduit : MonoBehaviour
             LevelManager._instance.RefreshCoresCompleted();
             locked = true;
         }
+
+        if(powered)
+            mr.material.SetColor("_GlowColor", yellow);
+
         return powered;
     }
 
