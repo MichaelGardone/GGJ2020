@@ -67,6 +67,7 @@ public class PowerConduit : MonoBehaviour
         }
         else if(powered)
         {
+            Debug.Log("Ran out of time for conduit");
             mr.material.SetColor("_GlowColor", red);
             timer = 0;
             powered = false;
@@ -115,9 +116,11 @@ public class PowerConduit : MonoBehaviour
                 timer = timeUntilReset;
             }
         }
-        else if (isCore)
+        if (isCore)
         {
+            Debug.Log("IS CORE");
             powered = true;
+            timer = timeUntilReset;
         }
         else if(LevelManager._instance.objectiveState == 1)
         {
