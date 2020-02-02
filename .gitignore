@@ -17,8 +17,6 @@ GGJ2020/[Tt]emp/
 
 # Unity3D generated meta files
 *.pidb.meta
-# Ignore: name DOT meta
-*.meta
 # Include: name DOT extension DOT meta
 !*.*.meta
 
