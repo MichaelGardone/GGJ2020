@@ -88,45 +88,23 @@ public class MouseInput : MonoBehaviour
 
             if(targetPosition != finalPosition)
             {
-                if (targetPosition == currTarget && currPosition < targetPositions.Count - 2)
-                {
-                    currPosition++;
-                    currTarget = targetPositions[currPosition];
-                }
-                else if (targetPosition == currTarget && currPosition == targetPositions.Count - 2)
-                {
-                    currTarget = finalPosition;
-                }
-
-                targetPosition = Vector3.MoveTowards(targetPosition, currTarget, stepSize);
-                line.SetPosition(currPosition, targetPosition);
-                for (int i = currPosition; i < line.positionCount; i++)
-                    line.SetPosition(i, targetPosition);
-
+                targetPosition = Vector3.MoveTowards(targetPosition, finalPosition, stepSize);
+                line.SetPosition(1, targetPosition);
                 claw.transform.position = targetPosition;
             }
             else
             {
-
-                if (timer >= timeToStraighten)
+                if (!takenHealth)
                 {
-                    if (!takenHealth)
-                    {
-                        for (int i = 1; i < line.positionCount; i++)
-                            line.SetPosition(i, finalPosition);
-
-                        hs.ModifyHealth(-tetherCost);
-                        takenHealth = true;
-                    }
-
-                    line.SetPosition(0, transform.position);
-
-                    Vector3 dist = (finalPosition - transform.position);
-                    if (rb.velocity.magnitude < maxSpeed && dist.magnitude > 0.5f)
-                        rb.AddForce(new Vector3(dist.normalized.x, 0, dist.normalized.z) * acceleration);
+                    hs.ModifyHealth(-tetherCost);
+                    takenHealth = true;
                 }
-                else
-                    timer += Time.deltaTime;
+
+                line.SetPosition(0, transform.position);
+
+                Vector3 dist = (finalPosition - transform.position);
+                if (rb.velocity.magnitude < maxSpeed && dist.magnitude > 0.5f)
+                    rb.AddForce(new Vector3(dist.normalized.x, 0, dist.normalized.z) * acceleration);
             }
 
             // LOS
@@ -166,47 +144,48 @@ public class MouseInput : MonoBehaviour
         line.startWidth = 0.25f;
         line.endWidth = 0.25f;
         line.material = standardTether;
-        line.positionCount = Random.Range(2, 6) + 2;
+        line.positionCount = /*Random.Range(2, 6) +*/ 2;
 
-        Vector3 perp = Vector3.Cross(finalPosition - transform.position, Vector3.up).normalized;
-        Vector3 lerp = Vector3.Lerp(transform.position, finalPosition, 1 / line.positionCount).normalized;
-        lerp.y = 0;
-        Vector3 lastPos = transform.position;
-        Vector3 lastPosPos = transform.position;
-        float u = Random.Range(-2f, 2f);
+        //Vector3 perp = Vector3.Cross(finalPosition - transform.position, Vector3.up).normalized;
+        //Vector3 lerp = Vector3.Lerp(transform.position, finalPosition, 1 / line.positionCount).normalized;
+        //lerp.y = 0;
+        //Vector3 lastPos = transform.position;
+        //Vector3 lastPosPos = transform.position;
+        //float u = Random.Range(-2f, 2f);
         
-        // -1 = Start, -2 = Start+End
-        for (int i = 0; i < line.positionCount - 1; i++)
-        {
-            lastPos -= lerp + perp * Random.Range(-2f, 2f);
-            lastPos.x -= lerp.x * 4;
+        //// -1 = Start, -2 = Start+End
+        //for (int i = 0; i < line.positionCount - 1; i++)
+        //{
+        //    lastPos -= lerp + perp * Random.Range(-2f, 2f);
+        //    //lastPos.x -= lerp.x * 4;
 
-            if (finalPosition.x - transform.position.x <= 0)
-            {
-                lastPos.x = Mathf.Clamp(lastPos.x, lastPosPos.x - lastPosPos.x / 10, Mathf.Infinity);
-            }
-            else
-            {
-                lastPos.x = Mathf.Clamp(lastPos.x, lastPosPos.x + lastPosPos.x / 10, Mathf.Infinity);
-            }
+        //    if (finalPosition.x - transform.position.x <= 0)
+        //    {
+        //        lastPos.x = Mathf.Clamp(lastPos.x, lastPosPos.x - lastPosPos.x / 10, Mathf.Infinity);
+        //    }
+        //    else
+        //    {
+        //        lastPos.x = Mathf.Clamp(lastPos.x, lastPosPos.x + lastPosPos.x / 10, Mathf.Infinity);
+        //    }
 
-            if (finalPosition.z - transform.position.z <= 0)
-            {
-                lastPos.z = Mathf.Clamp(lastPos.z, lastPosPos.z - lastPosPos.z / 10, Mathf.Infinity);
-            }
-            else
-            {
-                lastPos.z = Mathf.Clamp(lastPos.z, lastPosPos.z + lastPosPos.z / 10, Mathf.Infinity);
-            }
+        //    if (finalPosition.z - transform.position.z <= 0)
+        //    {
+        //        lastPos.z = Mathf.Clamp(lastPos.z, lastPosPos.z - lastPosPos.z / 10, Mathf.Infinity);
+        //    }
+        //    else
+        //    {
+        //        lastPos.z = Mathf.Clamp(lastPos.z, lastPosPos.z + lastPosPos.z / 10, Mathf.Infinity);
+        //    }
 
-            lastPos.y = transform.position.y;
-            targetPositions.Add(lastPos);
-            u = Random.Range(-2f - u, 2f - u);
-        }
-        targetPositions[0] = transform.position;
-        targetPositions.Add(new Vector3(finalPosition.x, transform.position.y, finalPosition.z));
-        currTarget = targetPositions[0];
-        line.SetPosition(0, currTarget);
+        //    lastPos.y = transform.position.y;
+        //    targetPositions.Add(lastPos);
+        //    u = Random.Range(-2f - u, 2f - u);
+        //}
+        //targetPositions[0] = transform.position;
+        ////targetPositions.Add(new Vector3(finalPosition.x, transform.position.y, finalPosition.z));
+        //currTarget = targetPositions[0];
+        line.SetPosition(0, transform.position);
+        line.SetPosition(1, transform.position);
 
         CreateClaw();
     }
