@@ -9,6 +9,8 @@ public class Outlet : MonoBehaviour
     public static int chargePerTick = 5;
     [SerializeField] int chargePool;
     [HideInInspector] public bool inRange;
+    [SerializeField] AudioClip healSoundOverlap;
+    private AudioSource source;
 
     float timer;
     float tickMod = 1;
@@ -17,6 +19,7 @@ public class Outlet : MonoBehaviour
     private ParticleSystem particles;
     void Start()
     {
+        source = GetComponent<AudioSource>();
         particles = GetComponent<ParticleSystem>();
         timer = 0;
         remainingCharge = chargePool;
@@ -30,7 +33,9 @@ public class Outlet : MonoBehaviour
         {
             timer = 0;
             targetHealth.ModifyHealth(chargePerTick);
-            chargePool -= (int)(chargePerTick * Mathf.Clamp(1 / Vector3.Distance(targetHealth.transform.position, transform.position), 0f, 1f));
+
+            chargePool -= chargePerTick;
+            source.PlayOneShot(healSoundOverlap);
         }
         if(remainingCharge <=0 && particles.isPlaying)
         {
