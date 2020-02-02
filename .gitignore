@@ -15,13 +15,6 @@ GGJ2020/[Tt]emp/
 *.pidb
 *.booproj
 
-# Unity3D generated meta files
-*.pidb.meta
-# Ignore: name DOT meta
-*.meta
-# Include: name DOT extension DOT meta
-!*.*.meta
-
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
